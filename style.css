@@ -305,6 +305,13 @@ body{
     .left-content {
         order: 2;
     }
+
+    .left-content::before {
+      opacity: 0.4;
+    color: rgba(245, 18, 18, 0.05); /* Midab aad u khafiif ah */
+    z-index: 0; /* Si uu qoraalka uga dambeeyo */
+}
+
 }
 
 @media screen and (max-width: 750px) {
