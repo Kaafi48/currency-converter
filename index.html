@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- RIGHT SIDE -->
+    <div class="right-content">
+        <form action="#">
+
+            <p class="enter-amount">Enter Amount</p>
+            <input type="number" id="input-number" class="input-number" placeholder="0.00">
+
+            <div class="moneys">
+
+                <!-- FROM -->
+                <div class="from-money">
+                    <p class="from">From</p>
+
+                    <div class="select-flex">
+                        <div class="counter-flag">
+                            <img src="https://flagsapi.com/US/flat/64.png">
+                        </div>
+                        <select>
+                            <!-- <option value="USD">USD</option>
+                            <option value="SO">SO</option>
+                            <option value="TR">TR</option>
+                            <option value="AED">AED</option> -->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- CHANGE BUTTON -->
+                <button type="button" class="money-change">
+                    <i class="fa-solid fa-right-left"></i>
+                </button>
+
+                <!-- TO -->
+                <div class="to-money">
+                    <p class="to">To</p>
+
+                    <div class="select-flex">
+                        <div class="counter-flag">
+                           <img src="https://flagsapi.com/TR/flat/64.png">
+                        </div>
+                        <select>
+                            <!-- <option value="USD">USD</option>
+                            <option value="SO">SO</option>
+                            <option value="TR">TR</option>
+                            <option value="AED">AED</option> -->
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- SUBMIT -->
+            <button class="btn">
+                <i class="fa-solid fa-arrows-rotate"></i>
+                Get Exchange Rate
+            </button>
+
+        </form>
+    </div>
+
+    <!-- LEFT SIDE -->
+    <div class="left-content">
+        <p class="show-converter">0<span >USD</span>
+
+        </p>
+        <div class="live-rate">
+            <div class="dot-rate"></div>
+            <p>Live: 1 USD = 0.13 EUR</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- <script src="/co.js"></script> -->
+<script type="module" src="./index.js"></script>
+
+</body>
+</html>

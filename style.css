@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(140deg , rgb(255, 39, 39) , rgb(31, 31, 255));
+}
+
+.container{
+   display: flex;
+    width: 700px; /* Ballaca aad rabto */
+    height: 400px; /* Dhererka go'an ee sanduuqa */
+    background-color: white;
+    border-radius: 30px;
+    overflow: hidden; /* Si midabka buluugga ah uusan geesaha uga bixin */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+ 
+}
+
+/* right-content */
+
+.enter-amount , .from , .to{
+  color: rgb(183, 183, 183);
+}
+
+ #input-number {
+    width: 100%;
+    outline: none;
+    padding: 15px;
+    background: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 50px;
+    font-weight: bold;
+    border:none;
+     -moz-appearance: textfield;
+     overflow: hidden;
+ }
+
+ .right-content{
+    width: 300px;
+    padding: 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+#input-number::placeholder{
+   font-size: 50px;
+ }
+ .counter-flag{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+.counter-flag img{
+    width: 30px;
+    border-radius: 4px;
+    /* border: 1px solid linear-grident(135deg,red,blue); */
+}
+
+.moneys{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.select-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(246, 246, 246);
+    gap: 4px;
+    padding: 5px;
+    margin-top:5px;
+    border-radius: 4px;
+   border: 1px solid rgb(254, 103, 103);
+}
+.select-flex select{
+   background: transparent;
+   border: none;
+}
+
+.money-change{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    border: none;
+    margin-top: 20px;
+    padding: 5px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+     background: linear-gradient(135deg , red , rgb(254, 103, 103));
+}
+.money-change:hover{
+   background: white;
+   border: 1px solid rebeccapurple;
+}
+
+.money-change .fa-right-left{
+    transition: transform 0.5s ease;
+    transform: rotate(0deg);
+}
+.money-change:hover  .fa-right-left{
+     transform: rotate(360deg);
+     color:rebeccapurple ;
+}
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 16px ;
+    border: none;
+    color: #fff;
+    background: linear-gradient(135deg , red , rgb(254, 103, 103));
+    transition: all 0.3ms ease;
+}
+
+.btn:hover{
+       background: linear-gradient(135deg , rgb(254, 103, 103) , red);
+}
+
+
+.btn .fa-arrows-rotate {
+    transition: transform 0.5s ease;
+    transform: rotate(0deg);
+}
+
+.btn:hover .fa-arrows-rotate {
+    transform: rotate(360deg);
+}
+
+/* ----------------------- */
+
+.left-content{
+/*flex: 1; /* Waxay qaadanaysaa barka kale ee container-ka */
+    background: linear-gradient(135deg, #1e2a78 0%, #161e54 100%);
+    color: white;
+    padding: 70px;
+    
+    /* Muhiim: Hubi in dhererku yahay 100% marka loo eego container-ka */
+    height: 100%; 
+    box-sizing: border-box; /* Si padding-ku uusan dhererka u kharribin */
+    
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.left-content::before {
+    content: '💸'; /* Ama calaamad kale */
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    font-size: 15rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.05); /* Midab aad u khafiif ah */
+    z-index: 0; /* Si uu qoraalka uga dambeeyo */
+}
+.left-content > * {
+    position: relative;
+    z-index: 1;
+}
+
+.show-converter{
+    font-size: 60px;
+    font-weight: bold;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    gap: 10px;
+    max-width: 150px;
+    margin: 0 auto;
+}
+
+.show-converter span{
+    font-size: 20px;
+     margin-top: 30px;
+     font-weight: 400;
+     background: linear-gradient(135deg , rgb(254, 103, 103) , red);
+     padding: 5px;
+     border-radius: 8px;
+  
+}
+
+.live-rate{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+   background: linear-gradient(135deg , rgb(255, 48, 48), rgb(117, 255, 152));
+   padding: 10px;
+   border-radius: 8px;
+}
+
+.dot-rate {
+    width: 8px;
+    height: 8px;
+    background-color: #22c55e; /* Cagaar xoog leh */
+    border-radius: 50%;
+    position: relative; /* Muhiim u ah in ::before lagu dhex qariyo */
+    display: inline-block;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dot-rate::before {
+    content: ''; /* Muhiim: Haddii kani maqan yahay ma soo baxayo */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Dhexda toos uga keen */
+    
+    width: 16px; /* In yar ka weyn dhibicda dhexda */
+    height: 16px;
+    background-color: rgba(34, 197, 94, 0.4); /* Cagaar khafiif ah oo hufan (transparent) */
+    border-radius: 50%;
+    z-index: -1; /* Gadaal mari dhibicda yar */
+    animation: pulse 2s infinite;
+}
+
+.select-box select {
+    width: auto;
+    font-size: 16px;
+    margin: 0 -5px 0 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* 1. Cabirka scrollbar-ka */
+.select-flex select::-webkit-scrollbar {
+    width: 8px; /* Ballaca xariiqda */
+}
+
+/* 2. Jidka uu ku socdo (Track) */
+.select-flex select::-webkit-scrollbar-track {
+    background: #fff; /* Midabka cad */
+    border-radius: 10px;
+}
+
+/* 3. Meesha la jiidayo (Thumb) */
+.select-flex select::-webkit-scrollbar-thumb {
+    background: #888; /* Midabka cawlka ah */
+    border-radius: 8px;
+    /* Tani waxay ka dhigaysaa inuu u dhexeyo geesaha */
+    border: 2px solid #fff; 
+}
+
+/* 4. Marka mouse-ka la dul dhigo (Hover) */
+.select-flex select::-webkit-scrollbar-thumb:hover {
+    background: #ff6a6a; /* Midab yara madoobaada */
+}
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+}
+
+
+
+@media screen and (max-width: 490px) {
+    .container {
+        display: grid;
+        /* 1. Ka dhig hal khaanad (column) si ay isku kor fuulaan */
+        grid-template-columns: 1fr; 
+        
+        /* 2. Cabirka container-ka ka dhig mid ku habboon mobilka */
+        width: 95%; 
+        height: auto; /* Ha siin dherer go'an (fixed height) */
+        margin: 20px auto;
+    }
+
+    .right-content, .left-content {
+        width: 100%; /* Mid kasta ha qaato ballaca buuxa */
+        padding: 30px 20px; /* In yar yaree padding-ka mobilka */
+    }
+
+    /* 3. Haddii aad rabto inaad kala hor mariso (e.g. Form-ka ha soo hor maro) */
+    .right-content {
+        order: 1; 
+    }
+    .left-content {
+        order: 2;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .container {
+        /* 1. Beddel Flex-ka ama Grid-ka si ay isku kor fuulaan */
+        display: flex;
+        flex-direction: column; 
+        
+        /* 2. Cabirka ballaca ka dhig mid buuxa */
+        width: 90%; 
+        height: auto; /* Muhiim: Ha u deyn height go'an */
+        margin: 10px auto;
+        border-radius: 15px; /* In yar yaree wareegga geesaha */
+    }
+
+    .right-content, .left-content {
+        width: 100%; /* Mid kasta ha qaato 100% ballaca */
+        padding: 40px 20px; /* Padding-ka yaree si uu boos u helo */
+    }
+
+    /* 3. Kala hor marinta (Optional) */
+    .right-content {
+        order: 1; /* Form-ka ayaa sare maraya */
+    }
+    .left-content {
+        order: 2; /* Natiijada buluugga ah ayaa hoos maysa */
+        border-radius: 0 0 15px 15px; /* Wareegga hoose oo kaliya */
+    }
+}
