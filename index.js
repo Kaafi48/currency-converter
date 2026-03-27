@@ -64,7 +64,7 @@ function getExchangeRate(){
         amount.value = 1;
     }
 
-    let url = `https://v6.exchangerate-api.com/v6/${API_KEY}/latest/${from.value}`;
+    let url = `https://v6.exchangerate-api.com/v6/a8e812b74363e2f70455cb15/latest/${from.value}`;
     fetch(url)
     .then(Response => Response.json()).then(result =>{
         let exchangeRate = result.conversion_rates[to.value];
