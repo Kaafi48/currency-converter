@@ -7,6 +7,7 @@ const to = document.querySelector(".to-money select"); // Dhibicda lagu daray
 const btn = document.querySelector("form .btn");
 const droppList = document.querySelectorAll(".select-flex select");
 const moneyChange = document.querySelector(".money-change");
+const liveRate = document.querySelector(".liveRate")
   export let country_list = {
     "AED" : "AE",
     "AFN" : "AF",
@@ -209,6 +210,7 @@ moneyChange.addEventListener("click" , ()=>{
    to.value = iskuBadalXogta;
    loadFlag(from);
    loadFlag(to);
+   getExchangeRate();
 })
 
 btn.addEventListener("click" ,(e) =>{
@@ -224,7 +226,7 @@ function getExchangeRate(){
         amount.value = 1;
     }
 
-    let url = `https://v6.exchangerate-api.com/v6/a8e812b74363e2f70455cb15/latest/${from.value}`;
+    let url = `https://v6.exchangerate-api.com/v6/bcb16d2c312abc078f98bf63/latest/${from.value}`;
     fetch(url)
     .then(Response => Response.json()).then(result =>{
         let exchangeRate = result.conversion_rates[to.value];
@@ -232,16 +234,76 @@ function getExchangeRate(){
         const showConverter = document.querySelector(".show-converter");
         const signMoney = document.querySelector(".sign-money");
         showConverter.innerHTML = `${totallExchange} <span>${to.value}</span>`;
+        // liveRate.innerHTML = `Live: 1 ${from.value} = ${exchangeRate} ${to.value}`;
     });
 }
 
 
+function updateLiveRate() {
+   const from = document.querySelector(".from-money select").value;
+   const to = document.querySelector(".to-money select").value;
+    const  liveRate = document.querySelector(".live-rate .liveRate");
 
-// // Tusaale: Input-ka marka wax lagu qoro
-// inputNumber.addEventListener("input", () => {
-//     const daabac = inputNumber.value;
-//     
-//     if(showConverter) {
-//         showConverter.textContent = daabac;
-//     }
-// });
+    const url = `https://v6.exchangerate-api.com/v6/bcb16d2c312abc078f98bf63/latest/${from}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(result => {
+            let rate = result.conversion_rates[to];
+            // Ku dar qoraalka Live-ka ah
+            liveRate.innerHTML = `Live: 1 ${from} = ${rate.toFixed(2)} ${to}`;
+        })
+        .catch(() => console.log("Cilad ayaa jirta..."));
+}
+// 30,000 milisekond = 30 ilbiriqsi (Seconds)
+// Ha ka dhigin mid aad u yar (sida 1 sec) si aan API-ga lagaaga xannibin
+setInterval(updateLiveRate, 30000); 
+
+// Sidoo kale u yeer markii ugu horreysay ee bogg la furo
+updateLiveRate();
+
+
+
+// 1. Liiska lacagaha ee wareegaya
+const currenciesToWatch = ["SOS", "EUR", "TRY", "GBP", "AED", "SAR"];
+let currentIndex = 0;
+
+function rotateLiveRate() {
+    const fromCurrency = "USD"; // Kan mar walba waa Dollar (Sidiisii ayuu ahaanayaa)
+    const toCurrency = currenciesToWatch[currentIndex]; // Kan ayaa isbedbedalaya
+    const liveRateText = document.querySelector(".liveRate"); 
+    const myKey = "bcb16d2c312abc078f98bf63"; 
+
+    if(!liveRateText) return;
+
+    const url = `https://v6.exchangerate-api.com/v6/${myKey}/latest/${fromCurrency}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(result => {
+            let rate = result.conversion_rates[toCurrency];
+            
+            // Animation: Qari qoraalkii hore
+            liveRateText.style.opacity = "0";
+            liveRateText.style.transition = "opacity 0.5s ease-in-out";
+
+            setTimeout(() => {
+                // Ku qor qoraalka cusub (1 USD = X Currency)
+                liveRateText.innerHTML = `Live: 1 ${fromCurrency} = ${rate.toFixed(2)} <span>${toCurrency}</span>`;
+                
+                // Soo saar qoraalka cusub
+                liveRateText.style.opacity = "1";
+            }, 500);
+
+            // U gudub lacagta xigta ee liiska ku jirta
+            // Haddii uu dhamaado liisku (SAR), wuxuu dib ugu laabanayaa SOS (Index 0)
+            currentIndex = (currentIndex + 1) % currenciesToWatch.length;
+        })
+        .catch(() => console.log("Cilad ayaa jirta xogta sarrifka..."));
+}
+
+// 2. Isbedelka ka dhig 5-tii ilbiriqsiba
+setInterval(rotateLiveRate, 30000);
+
+// U yeer isla markii boggaga la furo (Initial call)
+rotateLiveRate();
